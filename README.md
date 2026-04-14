@@ -294,6 +294,31 @@ All exceptions are handled centrally by `GlobalExceptionHandler` using `@RestCon
 
 ---
 
+## Scalability Considerations
+
+- Payroll processing can be moved to async jobs for large employee counts
+- Database indexing on employeeId and date fields for faster queries
+- Pagination on employee listing APIs
+- Caching frequently accessed data (e.g., employee profiles)
+
+---
+
+## Security Considerations
+
+- JWT-based stateless authentication
+- Sensitive data like JWT secret should be stored in environment variables
+- Future: role-based access control (RBAC)
+- Input validation to prevent malformed requests
+
+---
+
+## Design Tradeoffs
+
+- Used synchronous payroll processing for simplicity; async processing would improve scalability
+- Stored breakdown as JSON for flexibility, but reduces queryability
+
+---
+
 ## 🔧 Known Limitations & Planned Improvements
 
 - **HireEmployee hardcoded values** — `role` and `salary` from the request are currently ignored and defaulted to `SDE_1` and ₹500,000 in `EmploymentHistory`. To be fixed in refactoring.
@@ -308,4 +333,4 @@ All exceptions are handled centrally by `GlobalExceptionHandler` using `@RestCon
 
 ---
 
-> Built by [Akshay Teja](https://github.com/AkshayTeja3) — a student backend project inspired by [Rippling](https://www.rippling.com/)
+> Built by [Akshay Teja](https://github.com/AkshayTeja3) — a backend project inspired by [Rippling](https://www.rippling.com/)
